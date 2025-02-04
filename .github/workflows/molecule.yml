@@ -35,8 +35,8 @@ jobs:
           python-version: '3.9'
       - name: Install Ansible & Molecule
         run: |
-            pip install "ansible" "ansible-lint" flake8
-            pip install "molecule" "ansible-compat"
+            pip install "requests < 2.32.0" "ansible" "ansible-lint" flake8
+            pip install "molecule" "ansible-compat" 
             pip install molecule-plugins[docker] pytest-testinfra
       - name: Run molecule
         run: molecule test -s "${{ matrix.scenario }}"
