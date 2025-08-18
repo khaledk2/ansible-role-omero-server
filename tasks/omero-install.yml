@@ -122,7 +122,7 @@
 # TODO: figure out dependencies
 - name: omero server | setup virtualenv3
   become: true
-  pip:
+  ansible.builtin.pip:
     name: "pip>=21"
     state: present
     virtualenv: "{{ omero_server_virtualenv_basedir }}"
@@ -130,7 +130,7 @@
 
 - name: omero server | install requirements
   become: true
-  pip:
+  ansible.builtin.pip:
     name: "{{ omero_server_python_requirements + omero_server_python_addons }}"
     state: present
     virtualenv: "{{ omero_server_virtualenv_basedir }}"
@@ -142,7 +142,7 @@
 - name: omero server | install omero
   become: true
   become_user: "{{ omero_server_system_user }}"
-  command: >
+  ansible.builtin.command: >
     {{ omero_server_omego }}
     install
     {{ omero_server_omego_options }}
@@ -172,7 +172,7 @@
 - name: omero server | backup database
   become: true
   become_user: "{{ omero_server_system_user }}"
-  command: >
+  ansible.builtin.command: >
     {{ omero_server_omego }}
     db dump
     {{ omero_server_omego_db_options }}
@@ -188,7 +188,7 @@
 - name: omero server | upgrade
   become: true
   become_user: "{{ omero_server_system_user }}"
-  command: >
+  ansible.builtin.command: >
     {{ omero_server_omego }}
     install --upgrade
     {{ omero_server_omego_options }}
@@ -203,21 +203,21 @@
 
 - name: omero server | delete OMERO.server/lib/python
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ omero_server_omerodir }}/lib/python"
     state: absent
 
 # Remembering to set OMERODIR everywhere is prone to error
 - name: omero server | create bin directory for wrapper
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ omero_server_omerodir }}/bin/"
     state: directory
     mode: 0555
 
 - name: omero server | create omero server wrapper
   become: true
-  template:
+  ansible.builtin.template:
     dest: "{{ omero_server_omero_command }}"
     src: bin-omero.j2
     mode: 0555
@@ -227,7 +227,7 @@
 
 - name: system packages | install openssl
   become: true
-  package:
+  ansible.builtin.package:
     name: openssl
     state: present
 
