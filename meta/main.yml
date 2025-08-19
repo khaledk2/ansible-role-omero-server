@@ -11,7 +11,7 @@ galaxy_info:
         - 9
     - name: Ubuntu
       versions:
-        - jammy
+        - noble
   namespace: ome      
   role_name: omero_server
   galaxy_tags: ['omero', 'server']
