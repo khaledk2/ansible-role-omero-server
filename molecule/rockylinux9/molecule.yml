@@ -35,8 +35,6 @@ provisioner:
   playbooks:
     # TODO: Use shared test playbooks
     converge: ../resources/playbook.yml
-  roles_path:
-    - ../../
   inventory:
     host_vars:
       omero-server-rockylinux9:
@@ -50,6 +48,3 @@ scenario:
 verifier:
   name: testinfra
   directory: ../resources/tests/
-
-role_name: ansible-role-omero-server
-
