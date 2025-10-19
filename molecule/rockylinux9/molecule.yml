@@ -16,8 +16,10 @@ platforms:
     command: /sbin/init
     privileged: true
     cgroupns_mode: host
-    tmpfs:
-      - /sys/fs/cgroup
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    #tmpfs:
+    #  - /sys/fs/cgroup
     groups:
       - docker-hosts
       - omero-py3
