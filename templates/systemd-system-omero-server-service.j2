@@ -32,10 +32,8 @@ ExecStop={{ omero_server_omero_command }} admin stop
 {% if omero_server_systemd_limit_nofile %}
 LimitNOFILE={{ omero_server_systemd_limit_nofile }}
 {% endif %}
-{% endif %}
 {% for name in (omero_additional_server_systemd_vars | sort) %}
 {{ name }}={{ omero_additional_server_systemd_vars[name] | quote }}
 {% endfor %}
-
 [Install]
 WantedBy=multi-user.target
