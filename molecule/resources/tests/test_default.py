@@ -75,8 +75,6 @@ def test_inplace_import(host):
     assert f.is_symlink
     assert f.linked_to == fake_file
 
-
-
 # test for omero_additional_server_systemd_vars new var
 def test_omero_web_service_config(host):
     serv_cfg = host.check_output("cat /etc/systemd/system/omero-server.service")
