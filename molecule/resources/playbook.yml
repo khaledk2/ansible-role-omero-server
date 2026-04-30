@@ -27,9 +27,9 @@
       omero_server_python_addons:
         - omero-upload
       omero_additional_server_systemd_vars:
-        Restart: on-failure
-        StartLimitIntervalSec: 600
-        StartLimitBurst: 5
+        - Restart: on-failure
+        - StartLimitIntervalSec: 600
+        - StartLimitBurst: 5
 
   tasks:
 
