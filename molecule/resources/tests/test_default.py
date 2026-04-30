@@ -74,3 +74,10 @@ def test_inplace_import(host):
     f = host.file('/OMERO/ManagedRepository/%s' % outhql.split(',', 1)[1])
     assert f.is_symlink
     assert f.linked_to == fake_file
+
+# test for omero_additional_server_systemd_vars new var
+def test_omero_web_service_config(host):
+    serv_cfg = host.check_output("cat /etc/systemd/system/omero-server.service")
+    assert 'StartLimitIntervalSec=600' in serv_cfg
+    assert 'StartLimitBurst=5' in serv_cfg
+    assert 'Restart=on-failure' in serv_cfg

@@ -74,6 +74,8 @@ omero_server_database_backupdir: ""
 # If true disable anonymous ciphers and use self-signed certificates
 omero_server_selfsigned_certificates: true
 
+# Dictionary of additional service variables
+omero_additional_server_systemd_vars: {}
 
 ######################################################################
 # Expert users only!
