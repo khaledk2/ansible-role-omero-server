@@ -26,8 +26,9 @@
       omero_server_release: latest
       omero_server_python_addons:
         - omero-upload
-      omero_additional_server_systemd_vars:
+      omero_additional_server_systemd_service_vars:
         Restart: on-failure
+      omero_additional_server_systemd_unit_vars:
         StartLimitIntervalSec: 600
         StartLimitBurst: 5
 

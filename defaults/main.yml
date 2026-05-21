@@ -58,7 +58,10 @@ omero_server_systemd_requires: []
 omero_server_systemd_environment: {}
 
 # Dictionary of additional service variables
-omero_additional_server_systemd_vars: {}
+omero_additional_server_systemd_service_vars: {}
+
+# Dictionary of additional unit variables
+omero_additional_server_systemd_unit_vars: {}
 
 # List of additional Python packages to be installed into virtualenv
 omero_server_python_addons: []
