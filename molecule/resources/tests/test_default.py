@@ -81,3 +81,8 @@ def test_omero_server_service_config(host):
     assert 'StartLimitIntervalSec=600' in serv_cfg
     assert 'StartLimitBurst=5' in serv_cfg
     assert 'Restart=on-failure' in serv_cfg
+
+# test for the correctness of the service variables
+def test_omero_server_service_config(host):
+    serv_ana = host.check_output("systemd-analyze verify omero-server.service")
+    assert 'Unknown key name' not in serv_ana
