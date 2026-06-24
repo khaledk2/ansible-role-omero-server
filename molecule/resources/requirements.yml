@@ -5,7 +5,5 @@
 - src: ome.java
 - src: ome.python3_virtualenv
 - src: ome.ice
-- name: ome.postgresql
-  src: "https://github.com/khaledk2/ansible-role-postgresql"
-  version: "fix_workflow_rhel_inst"
+- src: ome.postgresql
 - src: ome.postgresql_client
