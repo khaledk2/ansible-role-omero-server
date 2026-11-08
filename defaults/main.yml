@@ -1,4 +1,4 @@
- defaults/main.yml---
+---
 # defaults for omero-server
 
 omero_server_release: present
