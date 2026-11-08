@@ -5,7 +5,7 @@
 - src: ome.java
 - name: ome.python3_virtualenv
   src: https://github.com/khaledk2/ansible-role-python3-virtualenv
-  version: arch64
+  version: support_arm
 - name: ome.ice
   src: https://github.com/khaledk2/ansible-role-ice
   version: arch64
