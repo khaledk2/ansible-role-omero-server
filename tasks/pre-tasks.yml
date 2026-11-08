@@ -18,7 +18,7 @@
     name: ome.python3_virtualenv
   vars:
     virtualenv_basedir: "{{ omero_server_basedir }}"
-    python_version: "{{ python_version}}"
+    python_version: "3.11"
 
 - name: omero server | Include ome.ice role
   ansible.builtin.import_role:
