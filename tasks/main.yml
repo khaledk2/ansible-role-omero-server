@@ -1,7 +1,7 @@
 ---
 # tasks for omero-server
 - debug:
-   msg: " value of the wheel {{ omero_server_python_requirements_ice_package }}"
+   msg: " value of the Python wheel {{ omero_server_python_requirements_ice_package }}"
 - ansible.builtin.import_tasks: pre-tasks.yml
 
 - ansible.builtin.import_tasks: omero-user.yml
