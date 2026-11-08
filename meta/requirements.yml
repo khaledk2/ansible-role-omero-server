@@ -1,8 +1,11 @@
 ---
+
 - src: ome.omero_common
 - src: ome.basedeps
 - src: ome.java
-- src: ome.python3_virtualenv
+- name: ome.python3_virtualenv
+  src: https://github.com/khaledk2/ansible-role-ice
+  version: support_arm
 - name: ome.ice
   src: https://github.com/khaledk2/ansible-role-ice
   version: arch64
