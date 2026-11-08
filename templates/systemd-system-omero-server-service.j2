@@ -3,14 +3,18 @@ Description=OMERO.server
 # Requires: forces the dependency to be started
 # After: ensures this service starts after the dependency, but only if the
 # dependency is also started (PostgreSQL may be on a different server)
-After=postgresql-11.service
-After=postgresql-12.service
-After=postgresql-13.service
 After=postgresql-14.service
+After=postgresql-15.service
+After=postgresql-16.service
+After=postgresql-17.service
+After=postgresql-18.service
 After=network.service
 {% for value in omero_server_systemd_after %}After={{ value }}
 {% endfor %}
 {% for value in omero_server_systemd_requires %}Requires={{ value }}
+{% endfor %}
+{% for name in (omero_additional_server_systemd_unit_vars | sort) %}
+{{ name }}={{ omero_additional_server_systemd_unit_vars[name] | quote }}
 {% endfor %}
 
 [Service]
@@ -31,6 +35,9 @@ ExecStop={{ omero_server_omero_command }} admin stop
 {% if omero_server_systemd_limit_nofile %}
 LimitNOFILE={{ omero_server_systemd_limit_nofile }}
 {% endif %}
+{% for name in (omero_additional_server_systemd_service_vars | sort) %}
+{{ name }}={{ omero_additional_server_systemd_service_vars[name] | quote }}
+{% endfor %}
 
 [Install]
 WantedBy=multi-user.target

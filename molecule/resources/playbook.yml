@@ -8,12 +8,13 @@
     - role: ome.postgresql
       postgresql_databases:
         - name: omero
+          owner: omero
       postgresql_users:
         - user: omero
           password: omero
           databases: [omero]
 
-    - role: ansible-role-omero-server
+    - role: ome.omero_server
       omero_server_system_managedrepo_group: importer
       omero_server_config_set:
         Ice.IPv6: "0"
@@ -25,11 +26,16 @@
       omero_server_release: latest
       omero_server_python_addons:
         - omero-upload
+      omero_additional_server_systemd_service_vars:
+        Restart: on-failure
+      omero_additional_server_systemd_unit_vars:
+        StartLimitIntervalSec: 600
+        StartLimitBurst: 5
 
   tasks:
 
     - name: additional config file
-      copy:
+      ansible.builtin.copy:
         content: >
           config set omero.policy.binary_access -- "-read,-write,-image,-plate"
         dest: /opt/omero/server/config/molecule-additional-config.omero
@@ -43,18 +49,18 @@
   tasks:
 
     - name: create import user
-      user:
+      ansible.builtin.user:
         name: data-importer
         group: importer
 
     - name: create data directory
-      file:
+      ansible.builtin.file:
         path: /data/import
         state: directory
         mode: 0755
 
     - name: create fake image
-      copy:
+      ansible.builtin.copy:
         content: ''
         dest: /data/import/test.fake
         mode: 0644
