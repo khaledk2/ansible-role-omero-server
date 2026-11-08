@@ -69,10 +69,10 @@ omero_server_python_addons: []
 # Variable used in the ome.python3_virtualenv and for the
 # omero_server_python_requirements_ice_package. Use the same variable
 # (python_version) for both omero-server and omero-web.
-python_version: "3.11"
+server_python_version: "3.11"
 
 # Derived variable used in the omero_server_python_requirements_ice_package
-omero_server_python_version: "{{ python_version | replace('.', '') }}"
+omero_server_python_version: "{{ server_python_version | replace('.', '') }}"
 
 # If non-empty dump the OMERO database to this directory before upgrading
 omero_server_database_backupdir: ""
