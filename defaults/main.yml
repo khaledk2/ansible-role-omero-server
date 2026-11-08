@@ -87,10 +87,17 @@ omero_server_selfsigned_certificates: true
 
 omero_server_ice_version: "3.6"
 
+omero_server_python_requirements_ice_package:
+  x86_64:
+    "https://github.com/glencoesoftware/zeroc-ice-py-linux-x86_64/releases/download/20240202/zeroc_ice-3.6.5-cp{{ omero_server_python_version }}-cp{{ omero_server_python_version }}-manylinux_2_28_x86_64.whl"
+  aarch64:
+    "https://github.com/khaledk2/ice-archh-64/releases/download/New_packages/zeroc_ice-3.6.5-cp{{ omero_server_python_version }}-cp{{ omero_server_python_version }}-manylinux_2_34_aarch64.whl"
+
+
 omero_server_python_requirements_ice_package_x86: "https://github.com/glencoesoftware/zeroc-ice-py-linux-x86_64/releases/download/20240202/zeroc_ice-3.6.5-cp{{ omero_server_python_version }}-cp{{ omero_server_python_version }}-manylinux_2_28_x86_64.whl"
 omero_server_python_requirements_ice_package_arm: "https://github.com/khaledk2/ice-archh-64/releases/download/New_packages/zeroc_ice-3.6.5-cp{{ omero_server_python_version }}-cp{{ omero_server_python_version }}-manylinux_2_34_aarch64.whl"
 
-omero_server_python_requirements_ice_package: "{{ 'omero_server_python_requirements_ice_package_x86' if ansible_facts.get('architecture') == 'x86_64' else 'omero_server_python_requirements_ice_package_arm' }}"
+
 
 # TODO: sort this out
 # ? pip install omero-server-dependencies=={{omero_server_release}}
@@ -105,7 +112,7 @@ _omero_dropbox_version: '>=5.6.1'
 omero_server_python_requirements:
   - omego==0.8.0
   # TODO: make the use of our non-standard wheel optional
-  - "{{ omero_server_python_requirements_ice_package |
+  - "{{ omero_server_python_requirements_ice_package [ansible_facts.get('architecture') ] |
         default('zeroc-ice')}}"
   - "omero-py{{ _omero_py_version | default('') }}"
   - "omero-dropbox{{ _omero_dropbox_version  | default('') }}"
