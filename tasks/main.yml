@@ -1,6 +1,9 @@
 ---
 # tasks for omero-server
 
+- name: display used Python version
+  debug:
+    mes: "Python version is: {{ server_python_version }} , the org one is {{ server_python_version_ar }}"
 - ansible.builtin.import_tasks: pre-tasks.yml
 
 - ansible.builtin.import_tasks: omero-user.yml
