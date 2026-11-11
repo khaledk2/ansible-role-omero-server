@@ -1,6 +1,6 @@
 ---
-name: Molecule
-# yamllint disable-line rule:truthy
+name: Molecule-Arm
+run-name: Run Molecule on Arm
 on:
   push:
   pull_request:
