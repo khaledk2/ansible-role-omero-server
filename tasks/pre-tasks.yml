@@ -13,6 +13,10 @@
   ansible.builtin.import_role:
     name: ome.java
 
+- name: 2. display used Python version
+  debug:
+    msg: "2. Python version is: {{ server_python_version }} , the org one is {{ server_python_version_ar }}"
+
 - name: omero server | Include python3_virtualenv
   ansible.builtin.import_role:
     name: ome.python3_virtualenv
