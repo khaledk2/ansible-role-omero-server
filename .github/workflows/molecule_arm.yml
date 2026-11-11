@@ -1,6 +1,6 @@
 ---
 name: Molecule-Arm
-run-name: Run Molecule on Arm
+run-name: Molecule on Arm
 on:
   push:
   pull_request:
