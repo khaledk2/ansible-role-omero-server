@@ -15,7 +15,9 @@
 
 - name: 2. display used Python version
   debug:
-    msg: "2. Python version is: {{ server_python_version }} , the org one is {{ server_python_version_ar }}"
+    msg:
+    - "2. Python version is: {{ server_python_version }} , the org one is {{ omero_server_python_version }}"
+    - " the ice package is {{ omero_server_python_requirements_ice_package [ansible_facts.get('architecture') ] }}"
 
 - name: omero server | Include python3_virtualenv
   ansible.builtin.import_role:
