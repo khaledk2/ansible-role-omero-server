@@ -20,6 +20,12 @@
     virtualenv_basedir: "{{ omero_server_basedir }}"
     python_version: "{{ server_python_version }}"
 
+- name: 2. display used Python version
+  debug:
+    msg:
+    - "2. Python version is: {{ server_python_version }} , the org one is {{ omero_server_python_version }}"
+    - " the ice package is {{ omero_server_python_requirements_ice_package [ansible_facts.get('architecture') ] }}"
+
 - name: omero server | Include ome.ice role
   ansible.builtin.import_role:
     name: ome.ice
