@@ -1,5 +1,7 @@
 ---
 name: Molecule aarch64
+run-name: Run Molecule on aarch64 platform
+
 # yamllint disable-line rule:truthy
 on:
   push:

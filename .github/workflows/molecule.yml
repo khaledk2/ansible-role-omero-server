@@ -1,5 +1,7 @@
 ---
 name: Molecule x86_64
+run-name: Run Molecule on x86_64 platform
+
 # yamllint disable-line rule:truthy
 on:
   push:
