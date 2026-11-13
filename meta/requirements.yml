@@ -8,7 +8,7 @@
   version: support_arm
 - name: ome.ice
   src: https://github.com/khaledk2/ansible-role-ice
-  version: arch64
+  version: branch
 - name: ome.postgresql_client
   src: https://github.com/khaledk2/ansible-role-postgresql-client
   version: supporr_aarch64_x86_64_architecture
