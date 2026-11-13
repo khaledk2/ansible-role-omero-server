@@ -70,15 +70,7 @@ omero_server_python_addons: []
 # omero_server_python_requirements_ice_package. Use the same variable
 # (python_version) for both omero-server and omero-web.
 
-
-server_python_version_platform:
-  x86_64:
-    "3.12"
-  aarch64:
-    "3.11"
-
-server_python_version: "{{ server_python_version_platform [ansible_facts.get('architecture')]}}"
-
+server_python_version: "3.12"
 
 # Derived variable used in the omero_server_python_requirements_ice_package
 omero_server_python_version: "{{ server_python_version | replace('.', '') }}"
